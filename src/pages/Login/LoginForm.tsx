@@ -24,9 +24,10 @@ export const LoginForm = ({
   register,
   loading,
 }: LoginFormProps) => {
-  const history = useHistory()
+  const history = useHistory();
   return (
     <Grid
+      boxShadow="rgba(0, 0, 0, 0.35) 0px 5px 15px;"
       as="form"
       onSubmit={handleSignIn}
       marginTop="4"
@@ -75,7 +76,6 @@ export const LoginForm = ({
           width="100%"
           background="gray.300"
           color="white"
-          
           onClick={() => history.push("/signup")}
           border-radius="7px"
           _hover={{

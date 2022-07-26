@@ -6,8 +6,9 @@ import {Route} from "./Route"
 
 export const Routes = () => (
     <Switch>
-        <Route exact path="/" component={Login}/>
-        <Route path = "/dashboard" component={Dashboard}/>
+        <Route exact path="/" component={Dashboard}/>
+        {/* <Route path = "/dashboard" component={Dashboard}/> */}
+        <Route path="/login" component={Login}/>
         <Route path = "/signup" component={Signup}/>
     </Switch>
 )
