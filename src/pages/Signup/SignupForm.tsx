@@ -1,9 +1,7 @@
 import { Box, Button, Grid, Heading, Text, VStack } from "@chakra-ui/react";
 import {
   DeepMap,
-  DeepRequired,
   FieldError,
-  FieldErrorsImpl,
   FieldValues,
   UseFormRegister,
 } from "react-hook-form";
@@ -24,19 +22,20 @@ export const SignupForm = ({
   loading,
 }: SignupData) => (
   <Grid
+    boxShadow="rgba(0, 0, 0, 0.35) 0px 5px 15px;"
     as="form"
     onSubmit={handleSignIn}
-    marginTop="4"
-    width={["100%", "70%", "55%", "55%"]}
-    padding="30px 15px"
+    marginTop={["4", "4", "0"]}
+    width={["100%", "100%", "50%", "50%"]}
+    padding="20px 15px"
     border="3px solid"
     borderColor="gray.100"
     background="white"
     color="gray.900"
   >
-    <Heading size="lg">Bem vindo de volta!</Heading>
-    <VStack marginTop="6" spacing="5">
-    <Input
+    <Heading size="lg">Crie sua conta</Heading>
+    <VStack marginTop="5" spacing="4">
+      <Input
         icon={FaEnvelope}
         label="Nome"
         type="name"
@@ -63,38 +62,27 @@ export const SignupForm = ({
       <Input
         icon={FaLock}
         type="password"
+        border="none"
         label="Confirmação de senha"
         error={errors.confirm_password}
-        {...register("password")}
+        {...register("confirm_password")}
         placeholder="Confirme sua senha"
       />
     </VStack>
-    <VStack marginTop="4" spacing="5">
-      <Button
-        width="100%"
-        isLoading={loading}
-        background="purple.800"
-        color="white"
-        border-radius="7px"
-        _hover={{
-          background: "purple.900",
-        }}
-        type="submit"
-      >
-        Entrar
-      </Button>
-      <Text color="gray.400">Ainda não possui uma conta? </Text>
-      <Button
-        width="100%"
-        background="gray.300"
-        color="white"
-        border-radius="7px"
-        _hover={{
-          background: "gray.200",
-        }}
-      >
-        Cadastrar
-      </Button>
-    </VStack>
+
+    <Button
+      marginTop="20px"
+      width="100%"
+      isLoading={loading}
+      background="purple.800"
+      color="white"
+      border-radius="7px"
+      _hover={{
+        background: "purple.900",
+      }}
+      type="submit"
+    >
+      Finalizar Cadastro
+    </Button>
   </Grid>
 );
