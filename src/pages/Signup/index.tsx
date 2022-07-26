@@ -3,36 +3,39 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useState } from "react";
-import { LoginInfo } from "./LoginInfo";
-import { LoginForm } from "./LoginForm";
+import { SignupInfo } from "./SignupInfo";
+import { SignupForm } from "./SignupForm";
 import { useAuth } from "../../providers/AuthContext";
 
-const signInSchema = yup.object().shape({
+const signUpSchema = yup.object().shape({
+  name: yup.string().required("Nome obrigatorio"),
   email: yup.string().required("E-mail obrigatório").email("E-mail inválido"),
   password: yup.string().required("Senha obrigatória"),
+  confirm_password: yup
+    .string()
+    .required("Confirmação de senha obrigatória")
+    .oneOf([yup.ref("password")], "senhas diferentes"),
 });
 
-interface SignInData {
+interface SignUpData {
   email: string;
   password: string;
+  name: string
 }
 
-export const Login = () => {
+export const Signup = () => {
   const [loading, setLoading] = useState(false);
-
-  const { signIn } = useAuth();
 
   const {
     formState: { errors },
     register,
     handleSubmit,
   } = useForm({
-    resolver: yupResolver(signInSchema),
+    resolver: yupResolver(signUpSchema),
   });
 
-  const handleSignIn = (data: SignInData) => {
-    setLoading(true);
-    signIn(data)
+  const handleSignIn = (data: SignUpData) => {
+    console.log(data)
   };
 
   return (
@@ -55,8 +58,8 @@ export const Login = () => {
         flexDirection={["column", "column", "row", "row"]}
         alignItems="center"
       >
-        <LoginInfo />
-        <LoginForm
+        <SignupInfo />
+        <SignupForm
           errors={errors}
           handleSignIn={handleSubmit(handleSignIn as any)}
           loading={loading}
