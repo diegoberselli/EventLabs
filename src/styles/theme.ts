@@ -31,7 +31,7 @@ export const theme = extendTheme({
       body: "Inter",
     },
     fontSizes: {
-      xs: "0.75rem",
+      xs: "0.70rem",
       sm: "0.875rem",
       md: "1rem",
       lg: "1.125rem",

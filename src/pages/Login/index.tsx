@@ -5,11 +5,11 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useState } from "react";
 import { LoginInfo } from "./LoginInfo";
 import { LoginForm } from "./LoginForm";
-import { useAuth } from "../../providers/AuthContext";
+import { useAuth } from "../../contexts/Auth/AuthContext";
 
 const signInSchema = yup.object().shape({
   email: yup.string().required("E-mail obrigatório").email("E-mail inválido"),
-  password: yup.string().required("Senha obrigatória"),
+  password: yup.string().required(""),
 });
 
 interface SignInData {
