@@ -1,9 +1,9 @@
 import axios from "axios";
 import { createContext, ReactNode, useContext, useState } from "react";
-import { useHistory } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
+import {useNavigate} from "react-router-dom";
+import {toast} from 'react-hot-toast'
 
-import { api } from "../services/api";
+import { api} from "../../services/api"
 
 interface AuthProviderProps {
   children: ReactNode;
@@ -45,7 +45,7 @@ const useAuth = () => {
 };
 
 const AuthProvider = ({ children }: AuthProviderProps) => {
-  const { push: goTo } = useHistory();
+  const navigate  = useNavigate();
   const [data, setData] = useState<AuthState>(() => {
     const accessToken = localStorage.getItem("@eventlabs:accessToken");
     const user = localStorage.getItem("@eventlabs:user");
@@ -63,12 +63,14 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
         const { accessToken, user } = response.data;
         localStorage.setItem("@eventlabs:accessToken", accessToken);
         localStorage.setItem("@eventlabs:user", JSON.stringify(user));
-
+        toast.success("Login realizado");
         setData({ accessToken, user });
-        goTo("/dashboard");
+        
+        navigate("/");
       })
       .catch((err) => {
         console.log(err);
+        toast.error("Email ou senha inválidos!");
       });
   };
 
@@ -76,7 +78,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
     localStorage.removeItem("@eventlabs:accessToken");
     localStorage.removeItem("@eventlabs:user");
     setData({} as AuthState);
-    goTo("/");
+    navigate("/");
   };
 
   return (

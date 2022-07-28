@@ -1,9 +1,14 @@
-import { Box, Button, Center, Flex, Grid, Text, theme } from "@chakra-ui/react";
-import { FaHome, FaShoppingCart, FaUserAlt } from "react-icons/fa";
-import { useHistory } from "react-router-dom";
+import {
+  Box,
+  Center,
+  Flex,
+  Text,
+} from "@chakra-ui/react";
+import { FaHome, FaShoppingCart } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 export const Header = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
   return (
     <Box>
       <Flex
@@ -14,16 +19,18 @@ export const Header = () => {
         boxShadow="2px 10px 24px -13px rgba(0, 0, 0, 0.75);"
       >
         <Flex flex={{ base: 1 }}>
-          <Text fontSize={["xs", "2xl"]}>LabsEvents</Text>
+          <Text fontSize={["xs", "2xl"]}>
+            <b>Labs</b>Events
+          </Text>
         </Flex>
         <Center
           as="button"
           marginRight={["0px", "40px"]}
-          padding="5px"
+          padding="10px"
           height={["10px", "40px"]}
           borderRadius="5px"
-          _hover={{ background: "purple.400" }}
-          onClick={() => history.push("/")}
+          _hover={{ background: "gray.100" }}
+          onClick={() => navigate("/")}
         >
           <FaHome />
         </Center>
@@ -32,23 +39,23 @@ export const Header = () => {
           as="button"
           height={["5px", "40px"]}
           borderRadius="5px"
-          padding="5px"
-          _hover={{ background: "purple.400" }}
-          //   onClick={() => history.push("/login")}
+          padding="10px"
+          _hover={{ background: "gray.100" }}
+          onClick={() => navigate("/cart")}
         >
           <FaShoppingCart />
         </Center>
 
         <Center
-          onClick={() => history.push("/login")}
+          onClick={() => navigate("/login")}
           as="button"
-          padding="5px"
+          padding="10px"
           height={["5px", "40px"]}
-          marginLeft={["0px", "50px"]}
+          marginLeft={["0px", "40px"]}
           borderRadius="5px"
-          _hover={{ background: "purple.400" }}
+          _hover={{ background: "gray.100" }}
         >
-          <FaUserAlt />
+          <Text>Entrar</Text>
         </Center>
       </Flex>
     </Box>

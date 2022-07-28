@@ -1,14 +1,17 @@
-import { Switch } from "react-router-dom"
-import { Dashboard } from "../pages/Dashboard"
+import { Routes as Router, Route } from "react-router-dom"
+import { Shop } from "../pages/Shop"
 import { Login } from "../pages/Login"
 import { Signup } from "../pages/Signup"
-import {Route} from "./Route"
+import { ProductDescription } from "../pages/ProductDescription"
+import { Cart } from "../pages/Cart/index"
+
 
 export const Routes = () => (
-    <Switch>
-        <Route exact path="/" component={Dashboard}/>
-        {/* <Route path = "/dashboard" component={Dashboard}/> */}
-        <Route path="/login" component={Login}/>
-        <Route path = "/signup" component={Signup}/>
-    </Switch>
+    <Router>
+        <Route path="/" element={<Shop/>}/>
+        <Route path="/login" element={<Login/>}/>
+        <Route path = "/signup" element={<Signup/>}/>
+        <Route path="/cart" element={<Cart/>} />
+        <Route path="/product/:id" element={<ProductDescription/>} />
+    </Router>
 )

@@ -8,7 +8,7 @@ import {
   UseFormRegister,
 } from "react-hook-form";
 import { FaEnvelope, FaLock } from "react-icons/fa";
-import { useHistory } from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import { Input } from "../../components/Form/input";
 
 interface LoginFormProps {
@@ -24,7 +24,7 @@ export const LoginForm = ({
   register,
   loading,
 }: LoginFormProps) => {
-  const history = useHistory();
+  const navigate = useNavigate();
   return (
     <Grid
       boxShadow="rgba(0, 0, 0, 0.35) 0px 5px 15px;"
@@ -76,7 +76,7 @@ export const LoginForm = ({
           width="100%"
           background="gray.300"
           color="white"
-          onClick={() => history.push("/signup")}
+          onClick={() => navigate("/signup")}
           border-radius="7px"
           _hover={{
             background: "gray.200",
