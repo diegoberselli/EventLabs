@@ -2,7 +2,11 @@ import { extendTheme, theme as ChakraTheme } from "@chakra-ui/react";
 
 export const theme = extendTheme({
   colors: {
+    white:{
+      white:"#fff"
+    },
     purple: {
+      400: "#e9d8f2",
       500: "#8615df",
       600: "#510e91",
       800: "#38085c",
@@ -27,7 +31,7 @@ export const theme = extendTheme({
       body: "Inter",
     },
     fontSizes: {
-      xs: "0.75rem",
+      xs: "0.70rem",
       sm: "0.875rem",
       md: "1rem",
       lg: "1.125rem",
@@ -43,7 +47,7 @@ export const theme = extendTheme({
     },
     styles: {
       global: {
-        bg: "#FFF",
+        background: "#FFF",
         color: "gray.900",
       },
     },
